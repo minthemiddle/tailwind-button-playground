@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tailwind Button Playground</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+    :root {
+        --grey: #b8c2cc;
+        --before: '<button class="';
+        --after: '">Submit</div>';
+    }
+
+    #ac::before {
+        color: var(--grey);
+        content: var(--before);
+    }
+
+    #ac::after {
+        color: var(--grey);
+        content: var(--after);
+    }
+
+    .text-xxs {
+        font-size: 0.5rem;
+    }
+
+    .cursor-copy {
+        cursor: copy;
+    }
+
+    </style>
+</head>
+
+<body class="h-screen flex flex-col justify-center items-center">
+    <h1 class="text-xl mb-8">Tailwind Button Playground</h1>
+    <div class="text-center">
+        <div class="" onmouseover="this.classList.toggle('cursor-copy')" onclick="copyToClipboard(ac.innerHTML)">
+            <pre><code id="ac" class="text-lg"></code></pre>
+        </div>
+        <div>
+            <button class="mt-4 mb-8 bg-grey-lighter rounded-lg p-4" onclick="copyToClipboard(ac.innerHTML)">Copy classes</button>
+            <button class="mt-2 mb-8 bg-grey-lighter rounded-lg p-4" onclick="copyToClipboard(`<div class='${ac.innerHTML}'>Submit</div>`)">Copy full tag</button>
+        </div>
+    </div>
+    <div class="p-4 border border-pink w-full flex flex-col justify-center items-center h-32 bg-grey-lightest">
+        <div>
+            <div class="ph bg-grey text-grey-darkest text-xxs p-1 hidden">T</div>
+        </div>
+        <div class="flex justify-center items-center">
+            <div class="ph bg-grey text-grey-darkest text-xxs p-1 hidden">L</div>
+            <!-- Start: Component -->
+            <button id="button1" class="p-2 bg-black text-white">Submit</button>
+            <!-- Start: Component -->
+            <div class="ph bg-grey text-grey-darkest text-xxs p-1 hidden">R</div>
+        </div>
+        <div>
+            <div class="ph bg-grey text-grey-darkest text-xxs p-1 hidden">B</div>
+        </div>
+    </div>
+    <div class="flex flex-wrap mt-8">
+        <!-- <button class="bg-grey-lighter rounded-lg p-4" id="bg" onclick="toggleComponentClass('bg-blue');toggleComponentClass('bg-red')">Change background color</button> -->
+        <button class="ml-4 bg-grey-lighter rounded-lg p-4" id="bg" onclick="toggleComponentClass('font-serif')">Change font type</button>
+        <button class="ml-4 bg-grey-lighter rounded-lg p-4" id="p" onclick="toggleComponentClass('m-2')">Toggle margin</button>
+        <button class="ml-4 bg-grey-lighter rounded-lg p-4" id="r" onclick="hideElements()">Toggle helper boxes</button>
+        <button class="ml-4 bg-grey-lighter rounded-lg p-4" id="r" onclick="getContrast()">Get contrast</button>
+        <button class="ml-4 bg-grey-lighter rounded-lg p-4" id="r" onclick="setButtonText()">Change button text</button>
+    </div>
+    <div class="flex">
+        <div id="control-padding" class="mt-4 mb-6">
+            <label class="block tracking-wide text-grey-darker text-xs font-bold mb-2" for="padding">
+                Padding
+            </label>
+            <div class="relative">
+                <select id="padding" class="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey" onchange="resetComponentClasses('p-0','p-1','p-2','p-3','p-4','px-2','py-2','pl-2','pr-2');addComponentClass(value);">
+                    <option value="">p-0 (default)</option>
+                    <option value="p-1">p-1</option>
+                    <option value="p-2" selected>p-2</option>
+                    <option value="p-3">p-3</option>
+                    <option value="p-4">p-4</option>
+                    <option value="px-2">px-2</option>
+                    <option value="py-2">py-2</option>
+                    <option value="pl-2">pl-2</option>
+                    <option value="pr-2">pr-2</option>
+                </select>
+                <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
+                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                        <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                </div>
+            </div>
+        </div>
+        <div id="control-background-color" class="ml-4 mt-4 mb-6">
+            <label class="block tracking-wide text-grey-darker text-xs font-bold mb-2" for="padding">
+                Background Color
+            </label>
+            <div class="relative">
+                <select id="padding" class="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey" onchange="resetComponentClasses('bg-black','bg-grey','bg-red','bg-orange','bg-yellow');addComponentClass(value);">
+                    <option value="">bg-none (default)</option>
+                    <option value="bg-black" selected>bg-black</option>
+                    <option value="bg-grey">bg-grey</option>
+                    <option value="bg-red">bg-red</option>
+                    <option value="bg-orange">bg-orange</option>
+                    <option value="bg-yellow">bg-yellow</option>
+                </select>
+                <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
+                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                        <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                </div>
+            </div>
+        </div>
+        <div id="control-text-color" class="ml-4 mt-4 mb-6">
+            <label class="block tracking-wide text-grey-darker text-xs font-bold mb-2" for="padding">
+                Text Color
+            </label>
+            <div class="relative">
+                <select id="padding" class="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey" onchange="resetComponentClasses('text-white', 'text-black','text-grey','text-red','text-orange','text-yellow');addComponentClass(value);">
+                    <option value="text-black">text-black (default)</option>
+                    <option value="text-white" selected>text-white</option>
+                    <option value="text-grey">text-grey</option>
+                    <option value="text-red">text-red</option>
+                    <option value="text-orange">text-orange</option>
+                    <option value="text-yellow">text-yellow</option>
+                </select>
+                <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
+                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                        <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                </div>
+            </div>
+        </div>
+        <div id="control-shadow" class="ml-4 mt-4 mb-6">
+            <label class="block tracking-wide text-grey-darker text-xs font-bold mb-2" for="padding">
+                Shadow
+            </label>
+            <div class="relative">
+                <select id="padding" class="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey" onchange="resetComponentClasses('shadow-none', 'shadow','shadow-md','shadow-lg','shadow-inner','shadow-outline');addComponentClass(value);">
+                    <option value="">shadow-none</option>
+                    <option value="shadow">shadow</option>
+                    <option value="shadow-md">shadow-md</option>
+                    <option value="shadow-lg">shadow-lg</option>
+                    <option value="shadow-inner">shadow-inner</option>
+                    <option value="shadow-outline">shadow-outline</option>
+                </select>
+                <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
+                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                        <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                </div>
+            </div>
+        </div>
+        <div id="control-border-rounding" class="ml-4 mt-4 mb-6">
+            <label class="block tracking-wide text-grey-darker text-xs font-bold mb-2" for="padding">
+                Rounded border
+            </label>
+            <div class="relative">
+                <select id="padding" class="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey" onchange="resetComponentClasses('rounded-sm', 'rounded', 'rounded-lg', 'rounded-full');addComponentClass(value);">
+                    <option value="">rounded-none (default)</option>
+                    <option value="rounded-sm">rounded-sm</option>
+                    <option value="rounded">rounded</option>
+                    <option value="rounded-lg">rounded-lg</option>
+                    <option value="rounded-full">rounded-full</option>
+                </select>
+                <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
+                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                        <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-4">
+        <h3 class="mb-2">Contrast</h3>
+        <div><em>Ratio:</em> <span id="c_ratio"></span></div>
+    </div>
+    <script>
+    let el = document.getElementById('button1');
+    let ac = document.getElementById('ac');
+
+    function showActiveClasses() {
+        let activeClassList = el.classList.value;
+        ac.innerHTML = activeClassList;
+    }
+
+    function toggleComponentClass(className) {
+        el.classList.toggle(className);
+        showActiveClasses();
+    }
+
+    function addComponentClass(className) {
+        el.classList.add(className);
+        showActiveClasses();
+    }
+
+    function removeComponentClass(className) {
+        el.classList.remove(className);
+        showActiveClasses();
+    }
+
+    function resetComponentClasses() {
+        for (var i = 0; i < arguments.length; i++) {
+            removeComponentClass(arguments[i]);
+        }
+    }
+
+    function hideElements() {
+        let ph = document.getElementsByClassName('ph');
+        for (let item of ph) {
+            item.classList.toggle('hidden');
+        }
+    }
+
+    function copyToClipboard(text) {
+        window.prompt('Copy to clipboard: Ctrl+C, Enter', text);
+    }
+
+    function rgb2hex(rgb) {
+        rgb = rgb.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+))?\)$/);
+        function hex(x) {
+            return ("0" + parseInt(x).toString(16)).slice(-2);
+        }
+        return hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
+    }
+
+    function getButtonColor(x) {
+        let buttonColor = window.getComputedStyle(el).getPropertyValue(x);
+        return rgb2hex(buttonColor);
+    }
+
+    function setContrastResults(x) {
+        let ratio = document.getElementById('c_ratio');
+        ratio.innerHTML = x;
+    }
+
+    function getContrast() {
+        let fc = getButtonColor('color');
+        let bc = getButtonColor('background-color');
+        let url = `https://webaim.org/resources/contrastchecker/?fcolor=${fc}&bcolor=${bc}&api`
+        fetch(url)
+          .then(response => response.json())
+          .then(data => setContrastResults(data['ratio']))
+    }
+
+    function setButtonText() {
+        let oldText = getComputedStyle(document.body).getPropertyValue('--after');
+        console.log(oldText);
+        let re = /(\\\"\>)(.*)(<.*)/;
+        let newText = "Test";
+        let newAfterText = oldText.replace(re, `$1${newText}$3`);
+        document.documentElement.style.setProperty('--after', newAfterText);
+        el.innerHTML = newText;
+    }
+
+
+
+
+
+
+    window.onload = showActiveClasses();
+
+    </script>
+</body>
+
+</html>
