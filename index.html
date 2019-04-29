@@ -213,6 +213,7 @@
 
     function rgb2hex(rgb) {
         rgb = rgb.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+))?\)$/);
+
         function hex(x) {
             return ("0" + parseInt(x).toString(16)).slice(-2);
         }
@@ -234,8 +235,8 @@
         let bc = getButtonColor('background-color');
         let url = `https://webaim.org/resources/contrastchecker/?fcolor=${fc}&bcolor=${bc}&api`
         fetch(url)
-          .then(response => response.json())
-          .then(data => setContrastResults(data['ratio']))
+            .then(response => response.json())
+            .then(data => setContrastResults(data['ratio']))
     }
 
     function setButtonText() {
@@ -248,26 +249,22 @@
         el.innerHTML = newText;
     }
 
-
-
-
-
-
     window.onload = showActiveClasses();
 
     // Fathom - simple website analytics - https://github.com/usefathom/fathom
-<script>
-(function(f, a, t, h, o, m){
-    a[h]=a[h]||function(){
-        (a[h].q=a[h].q||[]).push(arguments)
-    };
-    o=f.createElement('script'),
-    m=f.getElementsByTagName('script')[0];
-    o.async=1; o.src=t; o.id='fathom-script';
-    m.parentNode.insertBefore(o,m)
-})(document, window, '//analytics.martinbetz.eu/tracker.js', 'fathom');
-fathom('set', 'siteId', 'PVKRO');
-fathom('trackPageview');
+    (function(f, a, t, h, o, m) {
+        a[h] = a[h] || function() {
+            (a[h].q = a[h].q || []).push(arguments)
+        };
+        o = f.createElement('script'),
+            m = f.getElementsByTagName('script')[0];
+        o.async = 1;
+        o.src = t;
+        o.id = 'fathom-script';
+        m.parentNode.insertBefore(o, m)
+    })(document, window, '//analytics.martinbetz.eu/tracker.js', 'fathom');
+    fathom('set', 'siteId', 'PVKRO');
+    fathom('trackPageview');
 
     // Fathom
 
