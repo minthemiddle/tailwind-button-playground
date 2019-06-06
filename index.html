@@ -44,7 +44,7 @@
             <button class="mt-2 mb-8 bg-gray-200 rounded-lg p-4" onclick="copyToClipboard(`<div class='${ac.innerHTML}'>Submit</div>`)">Copy full tag</button>
         </div>
     </div>
-    <div class="p-4 border w-full flex flex-col justify-center items-center h-32 bg-white">
+    <div class="p-4 border w-full flex flex-col justify-center items-center h-64 bg-white">
         <div>
             <div class="ph bg-gray-500 text-gray-800 text-xxs p-1 hidden">T</div>
         </div>
@@ -80,7 +80,7 @@
             </label>
             <div class="relative">
                 <select id="padding" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" onchange="resetComponentClasses('p-0','p-1','p-2','p-3','p-4','px-2','py-2','pl-2','pr-2');addComponentClass(value);">
-                    <option value="">p-0 (default)</option>
+                    <option value="p-0">p-0 (default)</option>
                     <option value="p-1">p-1</option>
                     <option value="p-2" selected>p-2</option>
                     <option value="p-3">p-3</option>
@@ -102,7 +102,7 @@
             </label>
             <div class="relative">
                 <select id="padding" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" onchange="resetComponentClasses('bg-black','bg-white','bg-gray-500','bg-red-500','bg-orange-500','bg-yellow-500','bg-green-500','bg-teal-500','bg-blue-500','bg-indigo-500','bg-purple-500','bg-pink-500');addComponentClass(value);">
-                    <option value="">bg-none (default)</option>
+                    <option value="bg-transparent">bg-transparent (default)</option>
 					<option value="bg-white">bg-white</option>
                     <option value="bg-black" selected>bg-black</option>
                     <option value="bg-gray-500">bg-gray-500</option>
