@@ -6,30 +6,29 @@
     <title>Tailwind Button Playground</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
     <style>
-    :root {
-        --grey: #b8c2cc;
-        --before: '<button class="';
-        --after: '">Submit</div>';
-    }
+        :root {
+            --grey: #b8c2cc;
+            --before: '<button class="';
+            --after: '">Submit</div>';
+        }
 
-    #ac::before {
-        color: var(--grey);
-        content: var(--before);
-    }
+        #ac::before {
+            color: var(--grey);
+            content: var(--before);
+        }
 
-    #ac::after {
-        color: var(--grey);
-        content: var(--after);
-    }
+        #ac::after {
+            color: var(--grey);
+            content: var(--after);
+        }
 
-    .text-xxs {
-        font-size: 0.5rem;
-    }
+        .text-xxs {
+            font-size: 0.5rem;
+        }
 
-    .cursor-copy {
-        cursor: copy;
-    }
-
+        .cursor-copy {
+            cursor: copy;
+        }
     </style>
 </head>
 
@@ -40,8 +39,10 @@
             <pre><code id="ac" class="text-lg"></code></pre>
         </div>
         <div>
-            <button class="mt-4 mb-8 bg-grey-lighter rounded-lg p-4" onclick="copyToClipboard(ac.innerHTML)">Copy classes</button>
-            <button class="mt-2 mb-8 bg-grey-lighter rounded-lg p-4" onclick="copyToClipboard(`<div class='${ac.innerHTML}'>Submit</div>`)">Copy full tag</button>
+            <button class="mt-4 mb-8 bg-grey-lighter rounded-lg p-4" onclick="copyToClipboard(ac.innerHTML)">Copy
+                classes</button>
+            <button class="mt-2 mb-8 bg-grey-lighter rounded-lg p-4"
+                onclick="copyToClipboard(`<div class='${ac.innerHTML}'>Submit</div>`)">Copy full tag</button>
         </div>
     </div>
     <div class="p-4 border border-pink w-full flex flex-col justify-center items-center h-32 bg-grey-lightest">
@@ -61,8 +62,10 @@
     </div>
     <div class="flex flex-wrap mt-8">
         <!-- <button class="bg-grey-lighter rounded-lg p-4" id="bg" onclick="toggleComponentClass('bg-blue');toggleComponentClass('bg-red')">Change background color</button> -->
-        <button class="ml-4 bg-grey-lighter rounded-lg p-4" id="bg" onclick="toggleComponentClass('font-serif')">Change font type</button>
-        <button class="ml-4 bg-grey-lighter rounded-lg p-4" id="p" onclick="toggleComponentClass('m-2')">Toggle margin</button>
+        <button class="ml-4 bg-grey-lighter rounded-lg p-4" id="bg" onclick="toggleComponentClass('font-serif')">Change
+            font type</button>
+        <button class="ml-4 bg-grey-lighter rounded-lg p-4" id="p" onclick="toggleComponentClass('m-2')">Toggle
+            margin</button>
         <button class="ml-4 bg-grey-lighter rounded-lg p-4" id="r" onclick="hideElements()">Toggle helper boxes</button>
         <button class="ml-4 bg-grey-lighter rounded-lg p-4" id="r" onclick="getContrast()">Get contrast</button>
         <!-- <button class="ml-4 bg-grey-lighter rounded-lg p-4" id="r" onclick="setButtonText()">Change button text</button> -->
@@ -73,7 +76,9 @@
                 Padding
             </label>
             <div class="relative">
-                <select id="padding" class="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey" onchange="resetComponentClasses('p-0','p-1','p-2','p-3','p-4','px-2','py-2','pl-2','pr-2');addComponentClass(value);">
+                <select id="padding"
+                    class="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey"
+                    onchange="resetComponentClassesStartingWith('p-');addComponentClass(value);">
                     <option value="">p-0 (default)</option>
                     <option value="p-1">p-1</option>
                     <option value="p-2" selected>p-2</option>
@@ -95,13 +100,17 @@
                 Background Color
             </label>
             <div class="relative">
-                <select id="padding" class="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey" onchange="resetComponentClasses('bg-black','bg-grey','bg-red','bg-orange','bg-yellow');addComponentClass(value);">
+                <select id="padding"
+                    class="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey"
+                    onchange="resetComponentClassesStartingWith('bg');addComponentClass(value);">
                     <option value="">bg-none (default)</option>
                     <option value="bg-black" selected>bg-black</option>
-                    <option value="bg-grey">bg-grey</option>
-                    <option value="bg-red">bg-red</option>
-                    <option value="bg-orange">bg-orange</option>
-                    <option value="bg-yellow">bg-yellow</option>
+                    <option value="bg-gray-500">bg-gray-500</option>
+                    <option value="bg-red-500">bg-red-500</option>
+                    <option value="bg-orange-500">bg-orange-500</option>
+                    <option value="bg-yellow-500">bg-yellow-500</option>
+                    <option value="bg-green-500">bg-green-500</option>
+                    <option value="bg-pink-500">bg-pink-500</option>
                 </select>
                 <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -114,13 +123,17 @@
                 Text Color
             </label>
             <div class="relative">
-                <select id="padding" class="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey" onchange="resetComponentClasses('text-white', 'text-black','text-grey','text-red','text-orange','text-yellow');addComponentClass(value);">
+                <select id="padding"
+                    class="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey"
+                    onchange="resetComponentClassesStartingWith('text');addComponentClass(value);">
                     <option value="text-black">text-black (default)</option>
                     <option value="text-white" selected>text-white</option>
-                    <option value="text-grey">text-grey</option>
-                    <option value="text-red">text-red</option>
-                    <option value="text-orange">text-orange</option>
-                    <option value="text-yellow">text-yellow</option>
+                    <option value="text-gray-500">text-gray-500</option>
+                    <option value="text-red-500">text-red-500</option>
+                    <option value="text-orange-500">text-orange-500</option>
+                    <option value="text-yellow-500">text-yellow-500</option>
+                    <option value="text-green-500">text-green-500</option>
+                    <option value="text-pink-500">text-pink-500</option>
                 </select>
                 <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -133,7 +146,9 @@
                 Shadow
             </label>
             <div class="relative">
-                <select id="padding" class="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey" onchange="resetComponentClasses('shadow-none', 'shadow','shadow-md','shadow-lg','shadow-inner','shadow-outline');addComponentClass(value);">
+                <select id="padding"
+                    class="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey"
+                    onchange="resetComponentClassesStartingWith('shadow');addComponentClass(value);">
                     <option value="">shadow-none</option>
                     <option value="shadow">shadow</option>
                     <option value="shadow-md">shadow-md</option>
@@ -152,7 +167,9 @@
                 Rounded border
             </label>
             <div class="relative">
-                <select id="padding" class="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey" onchange="resetComponentClasses('rounded-sm', 'rounded', 'rounded-lg', 'rounded-full');addComponentClass(value);">
+                <select id="padding"
+                    class="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey"
+                    onchange="resetComponentClassesStartingWith('rounded');addComponentClass(value);">
                     <option value="">rounded-none (default)</option>
                     <option value="rounded-sm">rounded-sm</option>
                     <option value="rounded">rounded</option>
@@ -168,103 +185,104 @@
     </div>
     <div class="mt-4">
         <div><em>Contrast Ratio:</em> <span id="c_ratio"></span></div>
-        <div class="mt-4"><em>About:</em> MIT license, <a href="https://github.com/minthemiddle/tailwind-button-playground" target="_blank">project on Github</a>, PR's very welcome!</div>
+        <div class="mt-4"><em>About:</em> MIT license, <a
+                href="https://github.com/minthemiddle/tailwind-button-playground" target="_blank">project on Github</a>,
+            PR's very welcome!</div>
     </div>
     <script>
-    let el = document.getElementById('button1');
-    let ac = document.getElementById('ac');
+        let el = document.getElementById('button1');
+        let ac = document.getElementById('ac');
 
-    function showActiveClasses() {
-        let activeClassList = el.classList.value;
-        ac.innerHTML = activeClassList;
-    }
-
-    function toggleComponentClass(className) {
-        el.classList.toggle(className);
-        showActiveClasses();
-    }
-
-    function addComponentClass(className) {
-        el.classList.add(className);
-        showActiveClasses();
-    }
-
-    function removeComponentClass(className) {
-        el.classList.remove(className);
-        showActiveClasses();
-    }
-
-    function resetComponentClasses() {
-        for (var i = 0; i < arguments.length; i++) {
-            removeComponentClass(arguments[i]);
+        function showActiveClasses() {
+            let activeClassList = el.classList.value;
+            ac.innerHTML = activeClassList;
         }
-    }
 
-    function hideElements() {
-        let ph = document.getElementsByClassName('ph');
-        for (let item of ph) {
-            item.classList.toggle('hidden');
+        function toggleComponentClass(className) {
+            el.classList.toggle(className);
+
+            showActiveClasses();
         }
-    }
 
-    function copyToClipboard(text) {
-        window.prompt('Copy to clipboard: Ctrl+C, Enter', text);
-    }
-
-    function rgb2hex(rgb) {
-        rgb = rgb.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+))?\)$/);
-
-        function hex(x) {
-            return ("0" + parseInt(x).toString(16)).slice(-2);
+        function addComponentClass(className) {
+            if (!className) { return false; }
+            el.classList.add(className);
+            showActiveClasses();
         }
-        return hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
-    }
 
-    function getButtonColor(x) {
-        let buttonColor = window.getComputedStyle(el).getPropertyValue(x);
-        return rgb2hex(buttonColor);
-    }
+        function resetComponentClassesStartingWith(arg) {
+            var classes = el.className.split(" ").filter(function (c) {
+                return c.lastIndexOf(arg, 0) !== 0;
+            });
+            el.className = classes.join(" ").trim();
+            showActiveClasses();
+        }
 
-    function setContrastResults(x) {
-        let ratio = document.getElementById('c_ratio');
-        ratio.innerHTML = x;
-    }
+        function hideElements() {
+            let ph = document.getElementsByClassName('ph');
+            for (let item of ph) {
+                item.classList.toggle('hidden');
+            }
+        }
 
-    function getContrast() {
-        let fc = getButtonColor('color');
-        let bc = getButtonColor('background-color');
-        let url = `https://webaim.org/resources/contrastchecker/?fcolor=${fc}&bcolor=${bc}&api`
-        fetch(url)
-            .then(response => response.json())
-            .then(data => setContrastResults(data['ratio']))
-    }
+        function copyToClipboard(text) {
+            window.prompt('Copy to clipboard: Ctrl+C, Enter', text);
+        }
 
-    function setButtonText() {
-        let oldText = getComputedStyle(document.body).getPropertyValue('--after');
-        console.log(oldText);
-        let re = /(\\\"\>)(.*)(<.*)/;
-        let newText = "Test";
-        let newAfterText = oldText.replace(re, `$1${newText}$3`);
-        document.documentElement.style.setProperty('--after', newAfterText);
-        el.innerHTML = newText;
-    }
+        function rgb2hex(rgb) {
+            rgb = rgb.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+))?\)$/);
 
-    window.onload = showActiveClasses();
+            function hex(x) {
+                return ("0" + parseInt(x).toString(16)).slice(-2);
+            }
+            return hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
+        }
 
-    // Fathom - simple website analytics - https://github.com/usefathom/fathom
-    (function(f, a, t, h, o, m) {
-        a[h] = a[h] || function() {
-            (a[h].q = a[h].q || []).push(arguments)
-        };
-        o = f.createElement('script'),
-            m = f.getElementsByTagName('script')[0];
-        o.async = 1;
-        o.src = t;
-        o.id = 'fathom-script';
-        m.parentNode.insertBefore(o, m)
-    })(document, window, '//analytics.martinbetz.eu/tracker.js', 'fathom');
-    fathom('set', 'siteId', 'PVKRO');
-    fathom('trackPageview');
+        function getButtonColor(x) {
+            let buttonColor = window.getComputedStyle(el).getPropertyValue(x);
+            return rgb2hex(buttonColor);
+        }
+
+        function setContrastResults(x) {
+            let ratio = document.getElementById('c_ratio');
+            ratio.innerHTML = x;
+        }
+
+        function getContrast() {
+            let fc = getButtonColor('color');
+            let bc = getButtonColor('background-color');
+            let url = `https://webaim.org/resources/contrastchecker/?fcolor=${fc}&bcolor=${bc}&api`
+            fetch(url)
+                .then(response => response.json())
+                .then(data => setContrastResults(data['ratio']))
+        }
+
+        function setButtonText() {
+            let oldText = getComputedStyle(document.body).getPropertyValue('--after');
+            console.log(oldText);
+            let re = /(\\\"\>)(.*)(<.*)/;
+            let newText = "Test";
+            let newAfterText = oldText.replace(re, `$1${newText}$3`);
+            document.documentElement.style.setProperty('--after', newAfterText);
+            el.innerHTML = newText;
+        }
+
+        window.onload = showActiveClasses();
+
+        // Fathom - simple website analytics - https://github.com/usefathom/fathom
+        (function (f, a, t, h, o, m) {
+            a[h] = a[h] || function () {
+                (a[h].q = a[h].q || []).push(arguments)
+            };
+            o = f.createElement('script'),
+                m = f.getElementsByTagName('script')[0];
+            o.async = 1;
+            o.src = t;
+            o.id = 'fathom-script';
+            m.parentNode.insertBefore(o, m)
+        })(document, window, '//analytics.martinbetz.eu/tracker.js', 'fathom');
+        fathom('set', 'siteId', 'PVKRO');
+        fathom('trackPageview');
 
     // Fathom
 
