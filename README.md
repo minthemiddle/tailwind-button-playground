@@ -6,3 +6,4 @@
 - Sunday afternoon project: I love Tailwind, want to make it more accessible for beginners and wanted to learn some ES6 script (feel free to fix my beginner's mistakes!)
 - Might grow into a bigger Tailwind playground
 - **Issues and PR very very welcome!**
+- MIT licensed
